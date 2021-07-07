@@ -1,0 +1,20 @@
+<server>
+    <jpa defaultJtaDataSourceJndiName="jdbc/restdb"
+         defaultPersistenceProvider="org.apache.openjpa.persistence.PersistenceProviderImpl">
+    </jpa>
+    <dataSource jndiName="jdbc/restdb"
+                type="javax.sql.XADataSource"
+                connectionSharing="MatchCurrentState"
+                isolationLevel="TRANSACTION_READ_COMMITTED"
+                statementCacheSize="20">
+        <jdbcDriver libraryRef="jdbcLib"/>
+        <properties serverName="${env.databaseServer}" portNumber="3306"
+                    databaseName="restdb"
+                    user="root"
+                    password="root"/>
+    </dataSource>
+
+    <library id="jdbcLib">
+        <fileset dir="${server.config.dir}/libs" includes="*.jar"/>
+    </library>
+</server>
