@@ -1,5 +1,6 @@
 package br.com.aygean.rest.core.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,7 +26,15 @@ public class Article {
 
     private String content;
 
-    @Transient
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "article_category",
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @JsonManagedReference
+    private List<Category> categories;
+
+    @ManyToOne
     private User author;
 
     private LocalDate createdAt;
@@ -35,6 +44,22 @@ public class Article {
     private LocalDate disabledAt;
 
     private Boolean active;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id:" + id +
+                ", title:'" + title + '\'' +
+                ", slug'" + slug + '\'' +
+                ", resume:'" + resume + '\'' +
+                ", content:'" + content + '\'' +
+                ", author:" + author +
+                ", createdAt:" + createdAt +
+                ", updatedAt:" + updatedAt +
+                ", disabledAt:" + disabledAt +
+                ", active:" + active +
+                '}';
+    }
 }
 
 

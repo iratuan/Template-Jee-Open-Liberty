@@ -17,22 +17,22 @@ public class ArticleResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response index(){
+    public Response index() {
         return Response.ok(service.findAll()).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response show(@PathParam("id") Long id){
-        return Response.ok(service.show(id)).build();
+    public Response get(@PathParam("id") Long id) {
+        return Response.ok(service.get(id)).build();
     }
 
     @POST
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response show(@RequestBody Article article){
+    public Response insert(@RequestBody Article article) {
         return Response.ok(service.insert(article)).build();
     }
 }

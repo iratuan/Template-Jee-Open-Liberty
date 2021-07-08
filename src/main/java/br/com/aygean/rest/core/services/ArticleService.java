@@ -26,7 +26,7 @@ public class ArticleService {
         return repository.save(article);
     }
 
-    public Article show(Long id){
+    public Article get(Long id){
         Optional<Article> articlePersisted = Optional.ofNullable(repository.findBy(id));
         if(articlePersisted.isPresent()){
             return articlePersisted.get();

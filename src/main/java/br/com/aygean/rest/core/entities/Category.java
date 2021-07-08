@@ -1,5 +1,6 @@
 package br.com.aygean.rest.core.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,4 +22,17 @@ public class Category {
 
     private Boolean active;
 
+    @ManyToMany(mappedBy = "categories",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JsonBackReference
+    private List<Article> articles;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id:" + id +
+                ", name:'" + name + '\'' +
+                ", slug:'" + slug + '\'' +
+                ", active:" + active +
+                '}';
+    }
 }

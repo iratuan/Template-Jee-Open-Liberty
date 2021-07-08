@@ -24,7 +24,7 @@ public class CategoryService {
         return repository.save(category);
     }
 
-    public Category show(Long id) {
+    public Category get(Long id) {
         Optional<Category> categoryPersisted = Optional.ofNullable(repository.findBy(id));
         if (categoryPersisted.isPresent()) {
             return categoryPersisted.get();
