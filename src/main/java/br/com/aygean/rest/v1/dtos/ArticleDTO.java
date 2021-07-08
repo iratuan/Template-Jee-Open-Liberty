@@ -47,11 +47,11 @@ public class ArticleDTO implements Serializable {
         this.updatedAt = article.getUpdatedAt();
         this.disabledAt = article.getDisabledAt();
         this.active = article.getActive();
-//        if (!article.getCategories().isEmpty()) {
-//            for (Category category : article.getCategories()) {
-//                CategoryDTO categoryDTO = new CategoryDTO(category);
-//                this.categories.add(categoryDTO);
-//            }
-//        }
+        if (!article.getCategories().isEmpty()) {
+            for (Category category : article.getCategories()) {
+                CategoryDTO categoryDTO = new CategoryDTO(category);
+                this.categories.add(categoryDTO);
+            }
+        }
     }
 }
