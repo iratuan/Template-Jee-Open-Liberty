@@ -6,6 +6,7 @@ Projeto base para uso pessoal e profissional utilizando open liberty e microprof
 
 Sinta-se à vontade para evoluir e contribuir com esse template.
 
+Criado em Julho de 2021
 
 **Autor: @iratuan**
 
